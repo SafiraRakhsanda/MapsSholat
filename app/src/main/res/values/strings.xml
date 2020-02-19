@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MapsSholat</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="lokasi">Your Location : </string>
+    <string name="kirim_lokasi">Submit Your Current Location</string>
+    <string name="get_loc">Get Your Location Here</string>
+
+    <string name="fajr">Fajr :</string>
+    <string name="syuruq">Syuruq :</string>
+    <string name="fajr_time">Fajr</string>
+    <string name="syuruq_time">Syuruq</string>
+    <string name="dzuhur_time">Dzuhur</string>
+    <string name="dzuhur">Dzuhur :</string>
+    <string name="ashar">Ashar :</string>
+    <string name="ashar_time">Ashar</string>
+    <string name="maghrib">Maghrib :</string>
+    <string name="maghrib_time">Maghrib</string>
+    <string name="isya">Isya\' :</string>
+    <string name="isya_time">Isya\'</string>
+    <string name="location">Location :</string>
+    <string name="mylocation">My Location</string>
+    <string name="date">Date :</string>
+    <string name="current_date">Current Date</string>
+    <string name="search">Search</string>
+
+</resources>
