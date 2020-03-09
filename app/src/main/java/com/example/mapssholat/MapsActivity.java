@@ -50,14 +50,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         textView = findViewById(R.id.lokasi);
-        btn_lokasi = findViewById(R.id.button_kirim);
-        btn_lokasi.setOnClickListener(new View.OnClickListener() {
+        Button button = findViewById(R.id.button_kirim);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(MapsActivity.this)
                         .setTitle("Iya ga nih woi")
-                        .setMessage("Are You Sure?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        .setMessage("Iya aja lah ya")
+                        .setPositiveButton("Iye", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(MapsActivity.this, MuslimSalat.class);
@@ -65,35 +65,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 startActivity(intent);
                             }
                         })
-                        .setNegativeButton("No", null)
+                        .setNegativeButton("Nggak lah", null)
                         .show();
             }
         });
-
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLocation();
     }
 
-
     private void fetchLocation() {
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]
-                    {android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
             return;
         }
+
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
                     currentLocation = location;
-                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + " " + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
 
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     mapFragment.getMapAsync(MapsActivity.this);
-
                 }
             }
         });
@@ -103,7 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
-                .title("I Am Here");
+                .title("Aku Disiniii");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
         googleMap.addMarker(markerOptions);
@@ -130,8 +128,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -141,7 +137,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 fetchLocation();
             }
         }
-
     }
 }
 
